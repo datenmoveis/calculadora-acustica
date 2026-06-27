@@ -125,7 +125,20 @@ select:focus,input:focus{border-color:#FF6B35;background:#fff}
 /* FOOTER */
 .footer{text-align:center;padding:2rem;font-size:12px;color:#999;border-top:1px solid #E8E6E0;background:#fff;margin-top:1rem;line-height:1.8}
 </style>
-</head>
+<!-- Meta Pixel Daten -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1436674529997153');
+fbq('track', 'PageView');
+</script>
+<!-- Fim Meta Pixel --></head>
 <body>
 
 <header class="hd">
@@ -3234,6 +3247,10 @@ function _abrirJanelaImpressao() {
 // ENVIO DO FORMULÁRIO
 // ============================================================
 function enviar() {
+  // RASTREAMENTO META PIXEL — adicionar estas linhas
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'Lead', {content_name: 'Calculadora Acustica'});
+  }
   // Tipo de ambiente já capturado via uso-calc no cálculo
   const nome    = document.getElementById('f-nome').value.trim();
   const email   = document.getElementById('f-email').value.trim();
